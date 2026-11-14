@@ -1,0 +1,9 @@
+pymupdf
+pymupdf4llm
+python-docx
+chromadb
+ollama
+reportlab
+streamlit
+plotly
+pandas
