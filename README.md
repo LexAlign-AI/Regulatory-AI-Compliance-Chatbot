@@ -41,7 +41,7 @@ It is built around three principles:
 - **Compliance analysis** that understands each requirement, compares it with the evidence, classifies the level of compliance, and recommends fixes.
 - **Editable requirements catalogue** (`iso27001_requirements.json`) that you can extend without touching code.
 - **Step-by-step notebook** for experimentation, auto-generated from the core module so it never drifts out of sync.
-- **Swappable models**: use `qwen2.5:14b` for quality or `qwen2.5:7b` on a weaker machine.
+- **Swappable models**: use `llama3:8b` for quality or `qwen2.5:3b` on a weaker machine.
 
 ---
 
@@ -85,7 +85,7 @@ flowchart LR
 ### 1. Pull the local models
 
 ```bash
-ollama pull qwen2.5:14b      # use qwen2.5:7b on a weaker machine
+ollama pull llama3:8b      # use qwen2.5:3b on a weaker machine
 ollama pull bge-m3           # multilingual embeddings
 ```
 
@@ -95,13 +95,7 @@ ollama pull bge-m3           # multilingual embeddings
 pip install -r requirements.txt
 ```
 
-### 3. Generate a sample document (optional)
-
-```bash
-python make_sample.py
-```
-
-### 4. Launch the dashboard
+### 3. Launch the dashboard
 
 ```bash
 python server.py
@@ -128,8 +122,6 @@ jupyter notebook SLM_Powered_Regulatory.ipynb
 ├── app.js                        # Dashboard behavior (uploads, requests, rendering results)
 ├── run.bat                       # One-click launcher for Windows
 ├── iso27001_requirements.json    # ISO 27001 requirements as short paraphrases (editable)
-├── build_notebook.py             # Generates the notebook from regulatory_core.py
-├── make_sample.py                # Creates a sample company document
 ├── SLM_Powered_Regulatory.ipynb  # Step-by-step notebook (generated)
 └── requirements.txt              # Python dependencies
 ```
@@ -150,7 +142,7 @@ jupyter notebook SLM_Powered_Regulatory.ipynb
 
 | Setting | Where | Default | Notes |
 |---|---|---|---|
-| `LLM_MODEL` | `regulatory_core.py` | `qwen2.5:14b` | Switch to `qwen2.5:7b` on lower-spec machines |
+| `LLM_MODEL` | `regulatory_core.py` | `llama3:8b` | Switch to `qwen2.5:3b` on lower-spec machines |
 | Embedding model | `regulatory_core.py` | `bge-m3` | Multilingual, so documents in different languages work |
 | Requirements | `iso27001_requirements.json` | Paraphrased summaries | Add or edit entries to extend coverage |
 
